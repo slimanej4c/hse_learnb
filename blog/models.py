@@ -10,6 +10,7 @@ class Formation_all(models.Model):
     nom = models.CharField(max_length=100)
     description = models.TextField()
     duree = models.PositiveIntegerField()
+    image = models.ImageField(upload_to='formations', blank=True, null=True)
     def __str__(self):
         return str(self.nom) 
 class Groupe_all(models.Model):

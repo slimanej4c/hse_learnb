@@ -56,7 +56,9 @@ class FormationsView(APIView):
         print('user etat:',request.user.is_authenticated)
         print('user etat:',request.user.is_authenticated)
         formations = Formation_all.objects.all()
-        data = [{'id': formation.id, 'nom': formation.nom} for formation in formations]
+        
+        data = [{'id': formation.id, 'nom': formation.nom , 'image_url': formation.image.url} for formation in formations]
+        print(data)
         return Response(data)
 
 

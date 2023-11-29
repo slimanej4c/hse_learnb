@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import SignupView ,LoginView ,LogoutView ,FormationsView, GroupesView ,TokenLoginView
-
-
+from django.conf import settings
+from django.conf.urls.static import static
 app_name='blog'
 urlpatterns = [
   
@@ -10,6 +10,8 @@ urlpatterns = [
     path('logout', LogoutView.as_view()),
     path('formations', FormationsView.as_view(), name='formations'),
     path('groupes', GroupesView.as_view(), name='groupes'),
+    *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
+  
    
-   
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
