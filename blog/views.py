@@ -145,6 +145,14 @@ class LogoutView(APIView):
         except:
             return Response({ 'error': 'Something went wrong when logging out' })
 
+from django.shortcuts import render
+from django.http import JsonResponse
+from .models import Message
+
+def get_messages(request):
+    messages = Message.objects.all().values('content', 'timestamp')
+    return JsonResponse(list(messages), safe=False)
+
 """
 class UserView(APIView):
     def post(self, request):
